@@ -5,203 +5,335 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typisk Games</title>
     <style>
-        /* Reset and Global Styles */
+        /* Reset and Base Styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
+            font-size: 16px;
         }
 
-        h1, h2, h3, h4, p {
-            color: #333;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        /* Header Styling */
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
         header {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            background-color: #007bff; /* Bright blue for the header */
+            border-bottom: 2px solid #0056b3;
         }
 
-        h1 {
-            font-size: 4.5em;
-            margin-bottom: 10px;
-            font-weight: bold;
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
         }
 
-        h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            font-weight: 600;
+        header .logo h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        /* Navigation Bar */
-        nav {
-            background-color: #1e3c72;
-            padding: 15px;
-            text-align: center;
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 1.5em;
-            transition: color 0.3s ease-in-out;
+            color: #fff;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 10px;
+            transition: background-color 0.3s ease;
         }
 
         nav a:hover {
-            color: #ff6f61;
+            background-color: #0056b3;
+            border-radius: 5px;
         }
 
-        /* Content Section Styling */
-        .content {
-            padding: 60px 10%;
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1600x800/2f2f2f/ffffff?text=   ') no-repeat center center/cover;
+            text-align: center;
+            padding: 80px 0;
+            color: #fff;
         }
 
-        /* Section Styling */
-        .section {
-            margin-bottom: 60px;
-            padding: 40px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
 
-        .section:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Section Headings */
-        .section h3 {
-            font-size: 2.5em;
-            font-weight: bold;
+        .hero p {
+            font-size: 1.25rem;
             margin-bottom: 20px;
-            color: #003366;
         }
 
-        .section p {
-            font-size: 1.5em;
+        .cta-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .about p {
+            font-size: 1.25rem;
             line-height: 1.8;
+            color: #555;
             max-width: 900px;
             margin: 20px auto;
-            color: #666;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 0;
+            background-color: #007bff;
+            text-align: center;
+            color: #fff;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .features ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .features li {
+            background-color: #0056b3;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Merchandise Section */
-        .merchandise h4 {
-            font-size: 2.5em;
+        .merchandise {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .merchandise h2 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #003366;
+            color: #007bff;
         }
 
         .merchandise a {
-            color: #ff6f61;
-            font-size: 1.5em;
+            color: #007bff;
+            font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .merchandise a:hover {
-            color: #003366;
+            color: #0056b3;
         }
 
-        /* Social Links */
-        .links a {
-            display: inline-block;
-            background-color: #003366;
-            color: white;
-            text-decoration: none;
+        /* Social Links Section */
+        .socials {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .socials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .socials a {
+            background-color: #fff;
+            color: #007bff;
             padding: 15px 30px;
-            font-size: 1.3em;
-            margin: 10px 10px;
+            font-size: 1.3rem;
+            margin: 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
-        .links a:hover {
-            background-color: #ff6f61;
+        .socials a:hover {
+            background-color: #0056b3;
+            color: #fff;
         }
 
-        /* Footer Styling */
+        /* Footer Section */
         footer {
-            background-color: #003366;
-            color: white;
+            background-color: #007bff;
+            padding: 30px 0;
             text-align: center;
-            padding: 20px;
-            font-size: 1.3em;
+            color: #fff;
+        }
+
+        footer .footer-links a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+
+            .features ul {
+                grid-template-columns: 1fr;
+            }
+
+            footer .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Typisk Games</h1>
-        <h2>Building the Future of Gaming 🚀</h2>
-    </header>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo">
+                <img src="https://tr.rbxcdn.com/180DAY-1b75e48237de887c31ec8b7462e7e009/150/150/Image/Webp/noFilter" alt="Typisk Games Logo">
+                <h1>Typisk Games</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#features">What We're Building</a></li>
+                    <li><a href="#merchandise">Shop Our Gear</a></li>
+                    <li><a href="#socials">Let's Connect</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="#about-us">About Us</a>
-        <a href="#games">What We're Building</a>
-        <a href="#store">Shop Our Gear</a>
-        <a href="#socials">Let's Connect</a>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="content">
-
-        <!-- About Us Section -->
-        <div id="about-us" class="section">
-            <h3>👋 Who We Are</h3>
-            <p>
-                At Typisk Games, we’re a group of passionate young minds on a mission to change the game. Our team may be small, but our ambition is enormous! We believe in pushing boundaries, creating immersive worlds, and developing games that inspire and excite. We’re not just playing the game – we’re changing it. And we’re just getting started!
-            </p>
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>Welcome to Typisk Games!</h2>
+            <p>We’re a group of passionate gamers on a mission to change the game!</p>
+            <a href="#about-us" class="cta-button">Learn More</a>
         </div>
 
-        <!-- What We're Building Section -->
-        <div id="games" class="section">
-            <h3>🚀 What We're Building</h3>
-            <p>
-                Right now, we’re working on our most ambitious project yet – **Krill Games**! It’s a next-gen experience designed to captivate you from start to finish. Stay tuned for exciting updates, sneak peeks, and a whole new level of gaming that we can’t wait to share with you. 🌟
-            </p>
+        <!-- About Us Section -->
+        <div id="about-us" class="about">
+            <h2>👋 Who We Are</h2>
+            <p>Typisk Games is a team of young, motivated individuals working hard to revolutionize the gaming world. Our focus is to create immersive experiences that push the boundaries of interactive entertainment. We're here to make an impact!</p>
+        </div>
+
+        <!-- Features Section -->
+        <div id="features" class="features">
+            <h2>🚀 What We're Building</h2>
+            <ul>
+                <li>🎮 **Krill Games** – Our upcoming title that's going to shake things up!</li>
+                <li>🌟 Unique Game Mechanics</li>
+                <li>🚀 Fully Immersive Worlds</li>
+                <li>🎨 Stunning Art and Design</li>
+            </ul>
         </div>
 
         <!-- Merchandise Section -->
-        <div id="store" class="section merchandise">
-            <h4>🛍️ Our Merchandise</h4>
-            <p>Want to show your support for Typisk Games? Check out our awesome merch!</p>
+        <div id="merchandise" class="merchandise">
+            <h2>🛍️ Our Merchandise</h2>
+            <p>Get your hands on our official Typisk Games gear!</p>
             <p>🌟 <a href="https://www.roblox.com/catalog/108690757366642/T-Y-P-I-S-K-Games-Pants" target="_blank">Our Awesome Pants 👖</a></p>
             <p>🌟 <a href="https://www.roblox.com/catalog/80166834110930/T-Y-P-I-S-K-Games-Shirt" target="_blank">Our Stylish Shirt 👕</a></p>
         </div>
 
         <!-- Social Links Section -->
-        <div id="socials" class="section">
-            <h3>🎮 Let’s Connect!</h3>
-            <div class="links">
-                <a href="https://www.roblox.com/communities/35499555/T-Y-P-I-S-K-Games#!/about" target="_blank">Join Our Roblox Group</a>
-                <a href="https://www.youtube.com/@maxandtechy" target="_blank">Check Out Our YouTube Channel</a>
-            </div>
+        <div id="socials" class="socials">
+            <h2>🎮 Let’s Connect!</h2>
+            <a href="https://www.roblox.com/communities/35499555/T-Y-P-I-S-K-Games#!/about" target="_blank">Join Our Roblox Group</a>
+            <a href="https://www.youtube.com/@maxandtechy" target="_blank">Check Out Our YouTube Channel</a>
         </div>
 
+        <!-- Footer Section -->
+        <footer>
+            <div class="footer-links">
+                <a href="#about-us">About Us</a>
+                <a href="#features">What We're Building</a>
+                <a href="#merchandise">Shop</a>
+                <a href="#socials">Connect</a>
+            </div>
+            <p>&copy; 2025 Typisk Games. All Rights Reserved.</p>
+        </footer>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Typisk Games. All Rights Reserved. The journey has just begun! 🎮</p>
-    </footer>
 
 </body>
 </html>
