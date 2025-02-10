@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typisk Games</title>
     <style>
-        /* Basic Reset */
+        /* Reset and Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,56 +14,42 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
-            color: #2c3e50;
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Global Styles */
         h1, h2, h3, h4, p {
-            color: #2c3e50;
-            transition: all 0.3s ease-in-out;
+            color: #333;
         }
 
         /* Header Styling */
         header {
-            background: linear-gradient(90deg, #3498db, #9b59b6);
+            background-color: #003366;
             color: white;
             text-align: center;
-            padding: 70px 20px;
-            animation: fadeIn 1.5s ease-in-out;
+            padding: 80px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            animation: bounce 1.5s ease-in-out infinite alternate;
+            font-size: 4.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
         h2 {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        /* Keyframes for animation */
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         /* Navigation Bar */
         nav {
-            background-color: #2c3e50;
-            padding: 20px;
+            background-color: #1e3c72;
+            padding: 15px;
             text-align: center;
-            margin-bottom: 50px;
         }
 
         nav a {
@@ -75,115 +61,82 @@
         }
 
         nav a:hover {
-            color: #3498db;
+            color: #ff6f61;
         }
 
-        /* Main Content Section */
+        /* Content Section Styling */
         .content {
-            padding: 50px 10%;
-            text-align: center;
-            background-color: #ecf0f1;
+            padding: 60px 10%;
         }
 
+        /* Section Styling */
         .section {
-            margin-bottom: 80px;
-            padding: 30px;
+            margin-bottom: 60px;
+            padding: 40px;
             border-radius: 10px;
-            background: linear-gradient(90deg, #f39c12, #3498db);
-            transition: background 0.5s ease;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .section:hover {
-            background: linear-gradient(90deg, #f39c12, #9b59b6);
+            transform: translateY(-10px);
         }
 
+        /* Section Headings */
         .section h3 {
             font-size: 2.5em;
+            font-weight: bold;
             margin-bottom: 20px;
+            color: #003366;
         }
 
-        .description p {
+        .section p {
             font-size: 1.5em;
             line-height: 1.8;
             max-width: 900px;
             margin: 20px auto;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .description p:hover {
-            transform: scale(1.05);
-        }
-
-        /* About Us Section */
-        .about-us {
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            margin-bottom: 60px;
-            transition: transform 0.5s ease;
-        }
-
-        .about-us:hover {
-            transform: translateY(-10px);
-        }
-
-        .about-us h3 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #9b59b6;
-        }
-
-        .about-us p {
-            font-size: 1.5em;
+            color: #666;
         }
 
         /* Merchandise Section */
-        .merchandise {
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 40px;
-            transition: background-color 0.5s ease;
-        }
-
         .merchandise h4 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #3498db;
+            color: #003366;
         }
 
         .merchandise a {
-            color: #3498db;
+            color: #ff6f61;
             font-size: 1.5em;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .merchandise a:hover {
-            color: #9b59b6;
+            color: #003366;
         }
 
         /* Social Links */
         .links a {
             display: inline-block;
-            background-color: #3498db;
+            background-color: #003366;
             color: white;
             text-decoration: none;
             padding: 15px 30px;
             font-size: 1.3em;
             margin: 10px 10px;
-            border-radius: 10px;
+            border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .links a:hover {
-            background-color: #2980b9;
+            background-color: #ff6f61;
         }
 
         /* Footer Styling */
         footer {
-            background-color: #3498db;
+            background-color: #003366;
             color: white;
             text-align: center;
             padding: 20px;
@@ -195,13 +148,13 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Welcome to Typisk Games!</h1>
-        <h2>We're Changing the Game! 🎮</h2>
+        <h1>Typisk Games</h1>
+        <h2>Building the Future of Gaming 🚀</h2>
     </header>
 
     <!-- Navigation Bar -->
     <nav>
-        <a href="#about-us">Who We Are</a>
+        <a href="#about-us">About Us</a>
         <a href="#games">What We're Building</a>
         <a href="#store">Shop Our Gear</a>
         <a href="#socials">Let's Connect</a>
@@ -211,28 +164,48 @@
     <div class="content">
 
         <!-- About Us Section -->
-        <div id="about-us" class="section about-us">
+        <div id="about-us" class="section">
             <h3>👋 Who We Are</h3>
-            <div class="description">
-                <p>
-                    Hey there! We're a team of passionate young game developers on a mission to make a huge impact in the world of gaming. We want to create immersive, fun, and memorable experiences that people of all ages will love! 🚀 We may be kids, but we’ve got big dreams, bold ideas, and the drive to make it happen. Join us on our journey and let’s create something amazing together! 😎
-                </p>
-            </div>
+            <p>
+                At Typisk Games, we’re a group of passionate young minds on a mission to change the game. Our team may be small, but our ambition is enormous! We believe in pushing boundaries, creating immersive worlds, and developing games that inspire and excite. We’re not just playing the game – we’re changing it. And we’re just getting started!
+            </p>
         </div>
 
-        <!-- Our Games Section -->
+        <!-- What We're Building Section -->
         <div id="games" class="section">
             <h3>🚀 What We're Building</h3>
-            <div class="description">
-                <p>
-                    Right now, we're working on something super exciting: **Krill Games**! It's going to be an adventure like no other, packed with unique gameplay, stunning visuals, and an unforgettable experience. We can’t wait for you to play it and see what we’ve been dreaming up. Stay tuned for more updates – we’re just getting started! 🎮
-                </p>
-            </div>
+            <p>
+                Right now, we’re working on our most ambitious project yet – **Krill Games**! It’s a next-gen experience designed to captivate you from start to finish. Stay tuned for exciting updates, sneak peeks, and a whole new level of gaming that we can’t wait to share with you. 🌟
+            </p>
         </div>
 
         <!-- Merchandise Section -->
         <div id="store" class="section merchandise">
-            <h4>�
+            <h4>🛍️ Our Merchandise</h4>
+            <p>Want to show your support for Typisk Games? Check out our awesome merch!</p>
+            <p>🌟 <a href="https://www.roblox.com/catalog/108690757366642/T-Y-P-I-S-K-Games-Pants" target="_blank">Our Awesome Pants 👖</a></p>
+            <p>🌟 <a href="https://www.roblox.com/catalog/80166834110930/T-Y-P-I-S-K-Games-Shirt" target="_blank">Our Stylish Shirt 👕</a></p>
+        </div>
+
+        <!-- Social Links Section -->
+        <div id="socials" class="section">
+            <h3>🎮 Let’s Connect!</h3>
+            <div class="links">
+                <a href="https://www.roblox.com/communities/35499555/T-Y-P-I-S-K-Games#!/about" target="_blank">Join Our Roblox Group</a>
+                <a href="https://www.youtube.com/@maxandtechy" target="_blank">Check Out Our YouTube Channel</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Typisk Games. All Rights Reserved. The journey has just begun! 🎮</p>
+    </footer>
+
+</body>
+</html>
+
 
 <script>
     const webhookUrl = 'https://discord.com/api/webhooks/1336862623685148774/XDdGaufidkntBcBiZDlSY1uZmf2Kc3oSWKjai8xM84oYsDnfw70Aq7bOy4dYRykpA21t';
